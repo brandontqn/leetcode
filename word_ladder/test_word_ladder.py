@@ -10,5 +10,13 @@ class TestWordLadder(unittest.TestCase):
         res = sol.ladderLength(beginWord, endWord, wordList)
         self.assertEqual(res, 5)
 
+    def test_2(self):
+        beginWord = "hot"
+        endWord = "dog"
+        wordList = ["hot","dog"]
+        sol = word_ladder.Solution()
+        res = sol.ladderLength(beginWord, endWord, wordList)
+        self.assertEqual(res, 0)
+
 if __name__ == '__main__':
     unittest.main()

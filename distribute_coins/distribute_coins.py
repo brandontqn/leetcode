@@ -15,10 +15,13 @@ class TreeNode:
 
 class Solution:
     def distributeCoins(self, root: TreeNode) -> int:
-        return 0
+        self.ans = 0
 
-    def createBinaryTree(self, valList):
-        tree = list()
-        for i in range(len(valList)-2):
-            tree.append(TreeNode(valList[i], valList[i+1], valList[i+2]))
-        return tree
+        def dfs(node):
+            if(not node): return 0
+            L, R = dfs(node.left), dfs(node.right)
+            self.ans += abs(L) + abs(R)
+            return node.val + L + R - 1
+
+        dfs(root)
+        return self.ans
