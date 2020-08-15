@@ -8,7 +8,8 @@ import math
 # `target`: the integer the function will look for
 # `arr`: the array from which we will search for `target`, must be sorted
 def binarySearch(arr: [int], target: int) -> int:
-    return iterativeBinarySearch(arr, target)
+    # return iterativeBinarySearch(arr, target)
+    return recursiveBinarySearch(arr, target, 0, len(arr) - 1)
                 
 def iterativeBinarySearch(arr: [int], target: int) -> int:
     n = len(arr)
@@ -27,3 +28,15 @@ def iterativeBinarySearch(arr: [int], target: int) -> int:
                 left = mid + 1
             else:
                 right = mid - 1
+
+def recursiveBinarySearch(arr: [int], target: int, left: int, right: int) -> int:
+    if left > right:
+        return -1
+
+    mid = left + math.floor((right - left) / 2)
+    if (arr[mid] == target):
+        return mid
+    elif (arr[mid] < target):
+        return recursiveBinarySearch(arr, target, mid + 1, right)
+    else:
+        return recursiveBinarySearch(arr, target, left, mid - 1)
