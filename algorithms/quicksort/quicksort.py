@@ -7,6 +7,7 @@
 def quickSort(arr: [int]):
     low, high = 0, len(arr) - 1
     recursiveQuicksort(arr, low, high)
+    return arr
 
 def recursiveQuicksort(arr: [int], low: int, high: int):
     if (low < high):

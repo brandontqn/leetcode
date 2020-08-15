@@ -7,7 +7,10 @@ import math
 # Inputs:
 # `target`: the integer the function will look for
 # `arr`: the array from which we will search for `target`, must be sorted
-def binarySearch(target: int, arr: [int]) -> int:
+def binarySearch(arr: [int], target: int) -> int:
+    return iterativeBinarySearch(arr, target)
+                
+def iterativeBinarySearch(arr: [int], target: int) -> int:
     n = len(arr)
     left, right = 0, n - 1
     while left <= right:
@@ -23,4 +26,4 @@ def binarySearch(target: int, arr: [int]) -> int:
             elif (arr[mid] < target):
                 left = mid + 1
             else:
-                right = mid - 1            
+                right = mid - 1
