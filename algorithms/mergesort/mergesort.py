@@ -2,17 +2,20 @@ import math
 
 # Mergesort Algorithm
 # Returns a fully sorted array
-# Space Complexity: O(1)
+# Space Complexity: O(nlogn)
 # Time Complexity: O(nlogn)
 # Inputs:
 # `arr`: the unsorted array which we'll be sorting
 def mergeSort(arr: [int]):
+    return recursiveMergesort(arr)
+
+def recursiveMergesort(arr: [int]):
     if len(arr) < 2:
         return arr
 
     mid = math.floor(len(arr) / 2)
-    left_subarr = mergeSort(arr[:mid])
-    right_subarr = mergeSort(arr[mid:])
+    left_subarr = recursiveMergesort(arr[:mid])
+    right_subarr = recursiveMergesort(arr[mid:])
 
     return merge(left_subarr, right_subarr)
 
