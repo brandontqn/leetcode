@@ -32,5 +32,17 @@ class TestWordLadder(unittest.TestCase):
         res = sol.equationsPossible(equations)
         self.assertEqual(res, True)
 
+    def test_6(self):
+        equations = ['a!=a']
+        sol = satisfiability_of_equality_equations.Solution()
+        res = sol.equationsPossible(equations)
+        self.assertEqual(res, False)
+
+    def test_7(self):
+        equations = ['a==b', 'e==c', 'b==c', 'a!=e']
+        sol = satisfiability_of_equality_equations.Solution()
+        res = sol.equationsPossible(equations)
+        self.assertEqual(res, False)
+
 if __name__ == '__main__':
     unittest.main()

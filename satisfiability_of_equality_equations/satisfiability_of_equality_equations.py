@@ -9,24 +9,24 @@
 
 class Solution:
     def equationsPossible(self, equations: [str]) -> bool:
-        not_possible_equations = []
-        hashmap = {}
+        variables = {}
 
         arg_1_idx = 0
         arg_2_idx = 3
+        for equation in equations:
+            arg_1 = equation[arg_1_idx]
+            arg_2 = equation[arg_2_idx]
+            if (arg_1 not in variables.keys()):
+                variables[arg_1] = []
+            if (arg_2 not in variables.keys()):
+                variables[arg_2] = []
 
+        not_possible_equations = []
         for equation in equations:
             arg_1 = equation[arg_1_idx]
             arg_2 = equation[arg_2_idx]
             if equation[1:3] == '==':
-                # if (arg_1 in hashmap.keys() and arg_2 not in hashmap[arg_1]):
-                #     hashmap[arg_1].append(arg_2)
-                # else:
-                #     hashmap[arg_1] = [arg_2]
-                # if (arg_2 in hashmap.keys() and arg_1 not in hashmap[arg_2]):
-                #     hashmap[arg_2].append(arg_1)
-                # else:
-                #     hashmap[arg_2] = [arg_1]
+                self.updateVariables(variables, arg_1, arg_2)
             else:
                 not_possible_equations.append(equation)
         
@@ -34,10 +34,28 @@ class Solution:
             arg_1 = equation[arg_1_idx]
             arg_2 = equation[arg_2_idx]
 
-            if (arg_1 in hashmap.keys() and arg_2 in hashmap[arg_1]):
+            if arg_1 == arg_2:
+                return False
+
+            if (arg_2 in variables[arg_1]):
                 return False
             
-            if (arg_2 in hashmap.keys() and arg_1 in hashmap[arg_2]):
+            if (arg_1 in variables[arg_2]):
                 return False
 
         return True
+
+
+    def updateVariables(self, variables: dict, arg_1: str, arg_2: str):
+        if arg_1 == arg_2:
+            return
+
+        for i in variables[arg_1]:
+            variables[i].append(arg_2)
+            variables[arg_2].append(i)
+        variables[arg_1].append(arg_2)
+
+        for i in variables[arg_2]:
+            variables[i].append(arg_1)
+            variables[arg_1].append(i)
+        variables[arg_2].append(arg_1)
