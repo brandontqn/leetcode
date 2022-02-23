@@ -8,7 +8,7 @@ Return the number of buildings which are fully covered by the routers. A buildin
 """
 
 
-def removeCoveredIntervals(buildings, routerLocations, routerRanges):
+def coveredBuildings(buildings, routerLocations, routerRanges):
     intervals = []
     n = len(buildings)
     k = len(routerLocations)
@@ -39,7 +39,7 @@ def main():
     buildings = [3, 1, 1]
     routerLocations = [2, 1]
     routerRanges = [1, 0]
-    result = removeCoveredIntervals(buildings, routerLocations, routerRanges)
+    result = coveredBuildings(buildings, routerLocations, routerRanges)
     print(result)
 
 if __name__ == "__main__":
