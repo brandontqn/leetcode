@@ -42,9 +42,9 @@ def optimalAircraftRoutes(maxDistance, forwardRoutes, returnRoutes):
 
 
 def main():
-    maxDistance = 3000
+    maxDistance = 9000
     forwardRoutes = [(1, 2000), (2, 4000), (3, 5000)]
-    returnRoutes = [(1, 1000), (2, 4000), (3, 4950)]
+    returnRoutes = [(1, 4000), (2, 1000), (3, 4000), (4, 4950)]
     result = optimalAircraftRoutes(maxDistance, forwardRoutes, returnRoutes)
     print(result)
 

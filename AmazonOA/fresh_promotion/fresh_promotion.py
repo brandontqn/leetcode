@@ -1,11 +1,10 @@
 def flattenCodes(codeList):
-    res = []
+    flattened_codes = []
     for code in codeList:
-        res.append("*")
+        flattened_codes.append("*")
         for item in code:
-            res.append(item)
-        res.append("*")
-    return res
+            flattened_codes.append(item)
+    return flattened_codes
 
 def freshPromotion(shoppingCart, codeList):
     WINNER = 1
@@ -41,7 +40,7 @@ def freshPromotion(shoppingCart, codeList):
 
 def main():
     shoppingCart = ["banana", "apple", "orange", "apple", "apple", "orange", "banana"]
-    codeList = [["apple", "apple"], ["anything"]]
+    codeList = [["banana", "apple", "apple"], ["anything"]]
     result = freshPromotion(shoppingCart, codeList)
     print(result)
 
